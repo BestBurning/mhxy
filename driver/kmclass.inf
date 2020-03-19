@@ -1,0 +1,90 @@
+;
+; kmclass.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=kmclass.cat
+DriverVer = 03/16/2020,18.33.3.89
+
+[DestinationDirs]
+DefaultDestDir = 12
+kmclass_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+kmclass.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%kmclass.DeviceDesc%=kmclass_Device, Root\kmclass ; TODO: edit hw-id
+
+[kmclass_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+kmclass.sys
+
+;-------------- Service installation
+[kmclass_Device.NT.Services]
+AddService = kmclass,%SPSVCINST_ASSOCSERVICE%, kmclass_Service_Inst
+
+; -------------- kmclass driver install sections
+[kmclass_Service_Inst]
+DisplayName    = %kmclass.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\kmclass.sys
+
+;
+;--- kmclass_Device Coinstaller installation ------
+;
+
+
+[kmclass_Device.NT.CoInstallers]
+AddReg=kmclass_Device_CoInstaller_AddReg
+CopyFiles=kmclass_Device_CoInstaller_CopyFiles
+
+[kmclass_Device_CoInstaller_AddReg]
+;
+
+
+[kmclass_Device_CoInstaller_CopyFiles]
+;
+
+
+[kmclass_Device.NT.Wdf]
+KmdfService =  kmclass, kmclass_wdfsect
+[kmclass_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="diyishuai" ;TODO: Replace with your manufacturer name
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "kmclass Installation Disk"
+kmclass.DeviceDesc = "kmclass Device"
+kmclass.SVCDESC = "kmclass Service"
