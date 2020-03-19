@@ -55,12 +55,12 @@ C:\tools\cuda\include\cudnn.h
 
 ## 目录说明
 
-- driver   [kmclass键鼠驱动](https://github.com/BestBurning/kmclass)文件夹
+- [driver](https://github.com/BestBurning/mhxy/blob/master/driver)  --  [kmclass键鼠驱动](https://github.com/BestBurning/kmclass)文件夹
 
-- images   截图文件夹
-  - flag   标识文件夹：战斗标识、鼠标标识、弹框标识 
+- [images](https://github.com/BestBurning/mhxy/blob/master/images)  --  截图文件夹
+  - [flag](https://github.com/BestBurning/mhxy/blob/master/images/flag)   -- 标识文件夹：战斗标识、鼠标标识、弹框标识 
 
-- model    tensorflow 模型文件夹
+- [model](https://github.com/BestBurning/mhxy/blob/master/model)  --  tensorflow 模型文件夹
 
 ## 文件说明
 
@@ -90,3 +90,7 @@ C:\tools\cuda\include\cudnn.h
 
 - [util.py](https://github.com/BestBurning/mhxy/blob/master/util.py)          
 工具类  
+
+## 声明
+
+本人无任何商业目的，仅用于学习和娱乐，[源代码](https://github.com/BestBurning/mhxy)采用了[AGPL3.0](https://opensource.org/licenses/AGPL-3.0)开源协议
