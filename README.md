@@ -52,6 +52,11 @@ C:\tools\cuda\include\cudnn.h
 ## 运行
 
 
+## 成果展示
+
+![](https://github.com/BestBurning/mhxy/blob/master/images/github/result.gif)
+
+可以看到一次预测点击的耗时是在4s左右，欢迎Star
 
 ## 目录说明
 
@@ -59,7 +64,7 @@ C:\tools\cuda\include\cudnn.h
 
 - [images](https://github.com/BestBurning/mhxy/blob/master/images)  --  截图文件夹
   - [flag](https://github.com/BestBurning/mhxy/blob/master/images/flag)   -- 标识文件夹：战斗标识、鼠标标识、弹框标识 
-
+  - [github](https://github.com/BestBurning/mhxy/blob/master/images/github)  -- github文件夹 
 - [model](https://github.com/BestBurning/mhxy/blob/master/model)  --  tensorflow 模型文件夹
 
 ## 文件说明
