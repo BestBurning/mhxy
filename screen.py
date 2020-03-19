@@ -84,7 +84,7 @@ def shot():
         return False
     return True
 
-
+## 相似性判断
 def compare_image(path_image1, path_image2):
 
     imageA = cv.imread(path_image1)
@@ -190,15 +190,7 @@ def template_match(template_path,src_path):
         else:
             top_left = max_loc
         bottom_right = (top_left[0] + w, top_left[1] + h)  
-        # cv.rectangle(img,top_left, bottom_right, 255, 2)
-        # plt.subplot(121),plt.imshow(res,cmap = 'gray')
-        # plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
-        # plt.subplot(122),plt.imshow(img,cmap = 'gray')
-        # plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
-        # plt.suptitle(meth)
-        # plt.show()
         shape = (top_left[0],top_left[1],bottom_right[0],bottom_right[1])
-        # print(shape)
         if shape_dict.get(shape) == None:
             shape_dict[shape] = 1;
         else:
@@ -291,16 +283,6 @@ def task():
                         return True
     return False
 
-def main():
-    # i = 0
-    # while True:
-    task()
-        # i+=1
-        # print(i)
-        # time.sleep(5)
-
 
 if __name__ == '__main__':
-    now_x,now_y =  find_xy_indesktop(c.mouse_flag_img_path)
-    print (f'{now_x} , {now_y}')
-    print('Bye~')
+    shot()
