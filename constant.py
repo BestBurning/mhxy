@@ -21,8 +21,8 @@ img_desktop_path = os.path.join(img_dir_path,img_desktop_name)
 
 
 ### images/data/
-train_dir = os.path.join(data_dir_path, 'new-class')
-validation_dir = os.path.join(data_dir_path, 'new-class')
+train_dir = os.path.join(data_dir_path, 'train')
+validation_dir = os.path.join(data_dir_path, 'validation')
 noclass_dir_path = os.path.join(data_dir_path,'new-noclass')
 
 front_img_dir = os.path.join(train_dir,'front')

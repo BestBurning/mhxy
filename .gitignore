@@ -131,5 +131,9 @@ dmypy.json
 
 images/desktop.jpg
 images/mhxy.jpg
-images/data/new-class/*
+images/data/train/*
+images/data/validation/*
 images/sub/*
+images/data/*
+
+model/mhxy.h5

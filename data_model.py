@@ -48,7 +48,7 @@ def count():
     print('训练集标签 :',os.listdir(c.train_dir))
     print('训练集图片个数 :' , total_train)
     print("验证集个数 :", total_val)
-    print(f'每批次训练个数: {batch_size}, 共进行 {epochs} 轮训练')
+    print(f'每批次训练个数: {batch_size}, 共要进行 {epochs} 轮训练')
     if total_train == 0:
         print('样本为0 无法训练')
         return False
@@ -70,16 +70,6 @@ def data_generator():
                                                               directory=c.validation_dir,
                                                               target_size=(IMG_HEIGHT, IMG_WIDTH),
                                                               class_mode='binary')
-
-
-def plotImages(images_arr):
-    fig, axes = plt.subplots(1, 5, figsize=(20,20))
-    axes = axes.flatten()
-    for img, ax in zip( images_arr, axes):
-        ax.imshow(img)
-        ax.axis('off')
-    plt.tight_layout()
-    plt.show()
 
 def model_summary():
     t('模型编译统计')
@@ -138,6 +128,7 @@ def model_save():
     t('模型保存')
     global model
     model.save(c.model_path)
+    print(f'model save -> {c.model_path}')
 
 def model_load():
     t('模型读取')
@@ -153,8 +144,9 @@ def model_predict(paths):
     imgs =  tf.convert_to_tensor(imgs)
     predictions = model.predict(imgs)
     predictions = [row[0] for row in predictions]
+    print(predictions)
     min_index = predictions.index(min(predictions))
-    print(f' 预测结果为 第 > {min_index + 1} < 张图片<')
+    print(f' 预测结果为 第 > {min_index + 1} < 张图片')
     return min_index
 
 def preprocess_image(image):
@@ -185,8 +177,7 @@ def load_fit_save():
     return False
     
 if __name__ == '__main__':
-    # load_fit_save()
-    model_load()
-    index = model_predict(c.crop_4_img_paths)
-    
+    # base()
+    # model_load()
+    # model_predict(c.crop_4_img_paths)
     t('结束')
