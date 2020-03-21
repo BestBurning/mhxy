@@ -73,8 +73,15 @@ bcdedit /set testsigning on
 shutdown  -r -t 0
 ```
 重启后，`管理员身份`打开`CMD`
+
+- 自动点击弹窗
 ```
 python main.py --click 0
+```
+
+- 持续学习
+```
+python main.py --learn 0
 ```
 
 更多代码解读可以参考[这里](https://di1shuai.com/tags/%E6%A2%A6%E5%B9%BB%E8%A5%BF%E6%B8%B8/)
