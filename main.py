@@ -13,16 +13,17 @@ import data_model as dm
 import os
 import argparse
 
-### 训练模型 并 清空训练过的图片
-def learn_clean():
+###  将新图加入训练集 并 训练模型
+def move_learn():
+    sc.dir_check()
     util.log_title('图片朝向确认')
-    confirm = input(f'请确认路径  {os.path.abspath(c.front_img_dir)}   下图片朝向均为  > 前 <  : (确认后输入 Y , 输入其他退出) ')
+    confirm = input(f'请确认路径  {os.path.abspath(c.new_front_img_dir)}   下图片朝向均为  > 前 <  : (确认后输入 Y , 输入其他退出) ')
     if confirm == 'Y' or confirm == 'y':
-        confirm = input(f'请确认路径  {os.path.abspath(c.others_img_dir)}   下图片朝向均为  > 左 右 后 < : (确认后输入 Y , 输入其他退出)')
+        confirm = input(f'请确认路径  {os.path.abspath(c.new_others_img_dir)}   下图片朝向均为  > 左 右 后 < : (确认后输入 Y , 输入其他退出)')
         if confirm == 'Y' or confirm == 'y':
             util.log_h1_start('开始')
-            if dm.load_fit_save():
-                sc.clean_newclass_img()
+            sc.move_new_to_train()
+            dm.base()               
     util.log_h1_end('结束')
 
 ### 自动点击弹框
@@ -65,7 +66,7 @@ if args.click:
     auto_click()
 
 if args.learn:
-    learn_clean()
+    move_learn()
 
 
 if __name__ == '__main__':

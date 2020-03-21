@@ -168,35 +168,27 @@ def _key_down(key):
     driver.KeyUp(VK_CODE[key])
 
 def _left_button_down():
-    global driver
     driver.MouseLeftButtonDown()
 
 def _left_button_up():
-    global driver
     driver.MouseLeftButtonUp()
 
 def _right_button_down():
-    global driver
     driver.MouseRightButtonDown()
 
 def _right_button_up():
-    global driver
     driver.MouseRightButtonUp()
 
 def _middle_button_down():
-    global driver
     driver.MouseMiddleButtonDown()
 
 def _middle_button_up():
-    global driver
     driver.MouseMiddleButtonUp()
 
 def _move_rel(x, y):
-    global driver
     driver.MouseMoveRELATIVE(x,y)
 
 def _move_to(x, y):
-    global driver
     driver.MouseMoveABSOLUTE(x,y)
 
 def load_driver():
@@ -206,7 +198,6 @@ def load_driver():
     driver.SetHandle()
 
 def unload_driver():
-    global driver
     driver.UnloadNTDriver(c.driver_name)
 
 

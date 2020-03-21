@@ -21,12 +21,15 @@ img_desktop_path = os.path.join(img_dir_path,img_desktop_name)
 
 
 ### images/data/
-train_dir = os.path.join(data_dir_path, 'train')
-validation_dir = os.path.join(data_dir_path, 'validation')
-noclass_dir_path = os.path.join(data_dir_path,'new-noclass')
+train_dir = os.path.abspath(data_dir_path+'/train')
+validation_dir = data_dir_path+'/validation'
+new_dir_path = os.path.abspath(data_dir_path+'/new')
 
 front_img_dir = os.path.join(train_dir,'front')
 others_img_dir = os.path.join(train_dir,'others')
+
+new_front_img_dir = os.path.abspath(new_dir_path+'/front')
+new_others_img_dir = os.path.abspath(new_dir_path+'/others')
 
 ### model/
 model_path = os.path.join(model_dir_path,'mhxy.h5')

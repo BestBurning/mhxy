@@ -167,6 +167,7 @@ def base():
         model_save()
         return True
 
+
 def load_fit_save():
     if count():
         data_generator()

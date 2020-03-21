@@ -34,7 +34,10 @@ def get_all_hwnd(hwnd,mouse):
 
 def dir_check():
     util.log_title('文件夹检查')
-    dir_List = [c.img_dir_path,c.flag_dir_path,c.sub_dir_path,c.data_dir_path,c.train_dir,c.front_img_dir,c.others_img_dir];
+    dir_List = [
+        c.img_dir_path,c.flag_dir_path,c.sub_dir_path,c.data_dir_path,
+        c.train_dir,c.front_img_dir,c.others_img_dir,c.new_front_img_dir,c.new_others_img_dir
+        ];
     for path in dir_List:
         dir_create(path)
         print(f'\t{path}\t\tok')
@@ -254,17 +257,25 @@ def save_data_img(front_index):
     for i in range(len(c.crop_4_img_paths)):
         save_path = ''
         if i == front_index:
-            save_path = os.path.join(c.front_img_dir,time_str()+'_'+str(i)+'.jpg')
+            save_path = os.path.join(c.new_front_img_dir,time_str()+'_'+str(i)+'.jpg')
         else:
-            save_path = os.path.join(c.others_img_dir,time_str()+'_'+str(i)+'.jpg')
+            save_path = os.path.join(c.new_others_img_dir,time_str()+'_'+str(i)+'.jpg')
         shutil.copyfile(c.crop_4_img_paths[i],save_path)
 
 ### 
-def clean_newclass_img():
-    shutil.rmtree(c.train_dir)
-    dir_check()
+def move_new_to_train():
+    move_file(c.new_front_img_dir,c.front_img_dir)
+    move_file(c.new_others_img_dir,c.others_img_dir)
 
-
+def move_file(src_path,target_path):
+    file_list=os.listdir(src_path)
+    if len(file_list)>0:
+        for file in file_list:
+            shutil.move(
+                os.path.join(src_path,file),
+                os.path.join(target_path,file)
+                )   
+    print(f'{src_path} -> {target_path} 完毕')
 ####################################
 ####################################
 
@@ -272,17 +283,17 @@ def clean_newclass_img():
 def task():
 
     print()
-    if shot():                                                      ## 截图
+    if shot():                                                          ## 截图
         if image_check(c.img_sc_path,c.screen_size):                    ## 检查截图大小
-            fight_crop()                                            ## 战斗标识截图
-            if is_fight():                                          ## 判断是否在战斗
-                if popup_sub_crop():                                ## 弹窗识别 与 人物区域切出
+            fight_crop()                                                ## 战斗标识截图
+            if is_fight():                                              ## 判断是否在战斗
+                if popup_sub_crop():                                    ## 弹窗识别 与 人物区域切出
                     if image_check(c.popup_sub_img_path,c.sub_size):    ## 弹窗人物截图检查
-                        crop_4()                                    ## 弹窗人物切分                   
+                        crop_4()                                        ## 弹窗人物切分                   
                         print()
                         return True
     return False
 
 
 if __name__ == '__main__':
-    shot()
+    dir_check()

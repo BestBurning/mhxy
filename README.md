@@ -2,21 +2,20 @@
 tensorflow实践：梦幻西游人物弹窗识别
 
 ## 环境描述
-
-Windows
+[Windows](https://www.microsoft.com/zh-cn/software-download/windows10)
 
 ```
 C:\Users\SF>ver
 Microsoft Windows [版本 10.0.18363.720]
 ```
 
-Python
+[Python](https://www.python.org/downloads/)
 ```
 C:\Users\SF>python --version
 Python 3.7.6
 ```
 
-Tensorflow
+[Tensorflow](https://www.tensorflow.org/install)
 ```
 C:\Users\SF>python
 Python 3.7.6 (tags/v3.7.6:43364a7ae0, Dec 19 2019, 00:42:30) [MSC v.1916 64 bit (AMD64)] on win32
@@ -27,7 +26,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 '2.1.0'
 ```
 
-CUDA
+[CUDA](https://developer.nvidia.com/cuda-downloads)
 ```
 C:\Users\SF>nvcc --version
 nvcc: NVIDIA (R) Cuda compiler driver
@@ -37,7 +36,7 @@ Cuda compilation tools, release 10.2, V10.2.89
 
 ```
 
-cuDNN
+[cuDNN](https://developer.nvidia.com/cudnn)
 ```
 C:\tools\cuda\include\cudnn.h
 
@@ -49,14 +48,43 @@ C:\tools\cuda\include\cudnn.h
 #define CUDNN_VERSION (CUDNN_MAJOR * 1000 + CUDNN_MINOR * 100 + CUDNN_PATCHLEVEL)
 ...
 ```
+
+[梦幻西游](http://xyq.163.com/download/index.html?=xyqload)
+```
+启动方式   多标签版
+分辨率     800x600
+界面风格   暖风
+
+```
+![](https://github.com/BestBurning/mhxy/blob/master/images/github/mhxy_setting_1.jpg)
+![](https://github.com/BestBurning/mhxy/blob/master/images/github/mhxy_setting_2.jpg)
+
+
 ## 运行
+
+由于**鼠标点击**使用了[kmclassdll](https://github.com/BestBurning/kmclassdll)，所以需要开启 **测试模式** & **禁用强制驱动签名** 并 **重启**
+
+`管理员身份`打开`CMD`
+```
+bcdedit /set nointegritychecks on
+
+bcdedit /set testsigning on
+
+shutdown  -r -t 0
+```
+重启后，`管理员身份`打开`CMD`
+```
+python main.py --click 0
+```
+
+更多代码解读可以参考[这里](https://di1shuai.com/tags/%E6%A2%A6%E5%B9%BB%E8%A5%BF%E6%B8%B8/)
 
 
 ## 成果展示
 
 ![](https://github.com/BestBurning/mhxy/blob/master/images/github/result.gif)
 
-可以看到一次预测点击的耗时是在4s左右，欢迎Star
+可以看到一次预测点击的耗时是在**4s**左右，欢迎**Star**
 
 ## 目录说明
 
