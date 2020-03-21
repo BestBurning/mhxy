@@ -83,7 +83,7 @@ python main.py --click 0
 ```
 python main.py --learn 0
 ```
-
+如果使用`学习`功能的话，请下载[训练库](https://github.com/BestBurning/mhxy/releases)
 更多代码解读可以参考[这里](https://di1shuai.com/tags/%E6%A2%A6%E5%B9%BB%E8%A5%BF%E6%B8%B8/)
 
 
